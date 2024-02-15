@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - build-dependencies
   pull_request:
 jobs:
   build-linux:
