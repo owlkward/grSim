@@ -47,14 +47,14 @@ jobs:
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgGitCommitId: 8eb57355a4ffb410a2e94c07b4dca2dffbee8e50
-          vcpkgDirectory: c:/vcpkg  # folder must reside in c:\ otherwise qt wont install due to long path errors
+          # vcpkgDirectory: c:/vcpkg  # folder must reside in c:\ otherwise qt wont install due to long path errors
 
       - name: Run CMake and run vcpkg to build packages
         uses: lukka/run-cmake@v10
         with:
           # this preset is needed to actually install the vcpkg dependencies
           configurePreset: "ninja-multi-vcpkg"
-          configPresetAdditionalArgs: "[-DVCPKG_TARGET_TRIPLET=x64-windows]"
+          configurePresetAdditionalArgs: "['-DVCPKG_TARGET_TRIPLET=x64-windows']"
           buildPreset: "ninja-multi-vcpkg"
           buildPresetAdditionalArgs: "['--config Release']"
     env:
@@ -62,3 +62,4 @@ jobs:
       # for the hosting system will be automatically choosen (x64 is the default on all
       # platforms, e.g. `x64-osx`).
       VCPKG_DEFAULT_TRIPLET: "x64-windows"
+      # VCPKG_ROOT: "c:/vcpkg"
