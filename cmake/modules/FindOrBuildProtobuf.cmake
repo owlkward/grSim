@@ -1,6 +1,7 @@
 # sanitize environment before find_package, because otherwise it also looks in the directory created for the ExternalProject
 include(EnvHelper)
 sanitize_env()
+set(CMAKE_PREFIX_PATH "<vcpkg path>/vcpkg_installed/x64-windows/share/protobuf")
 find_package(Protobuf 3.3.0)
 restore_env()
 
